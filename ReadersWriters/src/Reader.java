@@ -20,16 +20,16 @@ public class Reader implements Runnable {
 	@Override
 	public void run() {
 		while (true) {
-      try {
+			try {
 				this.database.beforeRead();
 			} catch (InterruptedException e1) {}
-            
+
 			int value = this.database.read();
 			System.out.println("Reader " + this.id + " read: " + value);
-			
+
 			try {
 				this.database.afterRead();
 			} catch (InterruptedException e1) {}
-    }
+    		}
 	}
 }
