@@ -24,9 +24,9 @@ public class Database {
 	}
 	
 	/**
-     * Updates the database data.
-     * @param value the number to update the database value.
-     */
+	* Updates the database data.
+	* @param value the number to update the database value.
+	*/
 	public void write(int data) throws InterruptedException {
 		this.writerTurn.acquire();
 		this.writerSem.acquire();
@@ -38,16 +38,16 @@ public class Database {
 	}
 	
 	/**
-     * Reads the database data.
-     */
+	* Reads the database data.
+	*/
 	public int read() {
 		return this.data;
 	}
 	
 	/**
-     * Locks to read only.
-     * Used before read function.
-     */
+	* Locks to read only.
+	* Used before read function.
+	*/
 	public void beforeRead() throws InterruptedException {
 		this.writerTurn.acquire();
 		this.writerTurn.release();
@@ -63,9 +63,9 @@ public class Database {
 	}
 	
 	/**
-     * Unlocks from read-only
-     * Used after read function.
-     */
+	* Unlocks from read-only
+	* Used after read function.
+	*/
 	public void afterRead() throws InterruptedException {
 		this.readerSem.acquire();
 
