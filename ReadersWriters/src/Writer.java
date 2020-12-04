@@ -6,28 +6,28 @@ import java.util.Random;
  */
 public class Writer implements Runnable {
 	
-    private final Database database;
-    private int id;
+	private final Database database;
+	private int id;
     
-    /**
-	 * Creates a Writer instance that will run indefinitely when executed
-	 * @param database the database the Writer will use to write a integer.
-	 * @param id the unique id of the Writer.
-	 */
-    public Writer(Database database, int id) {
-    	this.database = database;
-    	this.id = id;
-    }
+  /**
+	* Creates a Writer instance that will run indefinitely when executed
+	* @param database the database the Writer will use to write a integer.
+	* @param id the unique id of the Writer.
+	*/
+	public Writer(Database database, int id) {
+		this.database = database;
+		this.id = id;
+	}
 
 	@Override
 	public void run() {
 		while (true) {
 			int value = new Random().nextInt(40);
-            try {
+      try {
 				this.database.write(value);
 				System.out.println("Writer " + this.id + " write: " + value);
 			} catch (InterruptedException e) {}
-         }
+    }
 	}
 	
 }

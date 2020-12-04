@@ -6,9 +6,9 @@ import java.util.concurrent.Semaphore;
  */
 public class Database {
 	
-    private Semaphore readerSem;
-    private Semaphore writerSem;
-    private Semaphore writerTurn;
+	private Semaphore readerSem;
+	private Semaphore writerSem;
+	private Semaphore writerTurn;
 	private int readers;
 	private int data;
 	
@@ -17,11 +17,11 @@ public class Database {
 	 */
 	public Database(){
 		this.readerSem = new Semaphore(1);
-        this.writerSem = new Semaphore(1);
-        this.writerTurn = new Semaphore(1);
-        this.readers = 0;
-        this.data = 0;
-    }
+		this.writerSem = new Semaphore(1);
+		this.writerTurn = new Semaphore(1);
+		this.readers = 0;
+		this.data = 0;
+	}
 	
 	/**
      * Updates the database data.

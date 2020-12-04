@@ -12,24 +12,24 @@ public class Reader implements Runnable {
 	 * @param database the database the Reader will use to read a integer from.
 	 * @param id the unique id of the Reader.
 	 */
-    public Reader(Database database, int id) {
-    	this.database = database;
-    	this.id = id;
-    }
+	public Reader(Database database, int id) {
+		this.database = database;
+		this.id = id;
+	}
 
 	@Override
 	public void run() {
 		while (true) {
-            try {
+      try {
 				this.database.beforeRead();
 			} catch (InterruptedException e1) {}
             
-            int value = this.database.read();
-            System.out.println("Reader " + this.id + " read: " + value);
-            
-            try {
+			int value = this.database.read();
+			System.out.println("Reader " + this.id + " read: " + value);
+			
+			try {
 				this.database.afterRead();
 			} catch (InterruptedException e1) {}
-         }
+    }
 	}
 }
